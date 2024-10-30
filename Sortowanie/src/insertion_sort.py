@@ -2,14 +2,15 @@
 
 def insertion_sort(to_sort: list):
     n = len(to_sort)
+    sorted_list = to_sort.copy()
     for i in range(1, n):
-        element = to_sort[i]
+        element = sorted_list[i]
         j = i - 1
-        while element < to_sort[j] and j>=0:
-            to_sort[j+1] = to_sort[j]
+        while element < sorted_list[j] and j>=0:
+            sorted_list[j+1] = sorted_list[j]
             j -= 1
-        to_sort[j + 1] = element
-    return to_sort
+        sorted_list[j + 1] = element
+    return sorted_list
 
 
 if __name__ == '__main__':

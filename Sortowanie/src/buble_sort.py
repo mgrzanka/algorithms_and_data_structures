@@ -2,12 +2,13 @@
 
 def bubble_sort(to_sort: list):
     n = len(to_sort)
+    sorted_list = to_sort.copy()
     for i in range(n):
         for j in range(1, n-i):
-            element1, element2 = to_sort[j], to_sort[j-1]
+            element1, element2 = sorted_list[j], sorted_list[j-1]
             if element1 < element2:
-                to_sort[j], to_sort[j-1] = element2, element1
-    return to_sort
+                sorted_list[j], sorted_list[j-1] = element2, element1
+    return sorted_list
 
 
 if __name__ == '__main__':

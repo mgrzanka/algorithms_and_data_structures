@@ -2,23 +2,32 @@
 
 def merge_sort(to_sort: list):
     n = len(to_sort)
-    if n == 1:
+    if n <= 1:
         return to_sort
 
     split_point = n//2
     split1, split2 = merge_sort(to_sort[:split_point]), merge_sort(to_sort[split_point:])
 
-    i = j = 0
-    n_split1, n_split2 = len(split1), len(split2)
-    sorted_list = []
-    while i < n_split1 and j < n_split2:
+    i = j = k = 0
+    sorted_list = n * [None]
+    while i < len(split1) and j < len(split2):
         if split1[i] < split2[j]:
-            sorted_list.append(split1[i])
+            sorted_list[k] = split1[i]
             i += 1
         else:
-            sorted_list.append(split2[j])
+            sorted_list[k] = split2[j]
             j += 1
-    sorted_list.extend(split1[i:]) if j == n_split2 else sorted_list.extend(split2[j:])
+        k += 1
+
+    while i < len(split1):
+        sorted_list[k] = split1[i]
+        i += 1
+        k += 1
+    while j < len(split2):
+        sorted_list[k] = split2[j]
+        j += 1
+        k += 1
+
     return sorted_list
 
 
