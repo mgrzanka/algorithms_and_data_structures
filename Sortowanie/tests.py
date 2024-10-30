@@ -7,6 +7,7 @@ from src.insertion_sort import insertion_sort
 from src.selection_sort import selectionSort
 from src.merge_sort import merge_sort
 from src.quick_sort import quickSort
+# sys.setrecursionlimit(limit)
 
 
 def get_words(file_name: str, n: int):
@@ -46,11 +47,11 @@ def test():
         print(f"{indx+1}/{len(n_values)} messures made")
 
     plt.plot(n_values, times)
-    plt.title(f"{algorithm_name}: execution time dependent on the size of the problem")
+    plt.title(f"{algorithm_name.upper()}: execution time dependent on the size of the problem")
     plt.xlabel('size of the problem')
     plt.ylabel('execution time')
     plt.grid()
-    plt.savefig(f"{algorithm_name}.png")
+    plt.savefig(f"{algorithm_name}_sort_plot.png")
     plt.show()
 
 
