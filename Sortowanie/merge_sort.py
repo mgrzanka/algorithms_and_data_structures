@@ -26,4 +26,3 @@ if __name__ == '__main__':
     to_sort = [-9, 1, 5, 2, 9, 1, 0, -1, -2, 22]
     sorted_list = merge_sort(to_sort)
     print(sorted_list)
-    pass
