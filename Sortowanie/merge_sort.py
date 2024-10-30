@@ -5,7 +5,7 @@ def merge_sort(to_sort: list):
     if n == 1:
         return to_sort
 
-    split_point = int(n/2)
+    split_point = n//2
     split1, split2 = merge_sort(to_sort[:split_point]), merge_sort(to_sort[split_point:])
 
     i = j = 0
