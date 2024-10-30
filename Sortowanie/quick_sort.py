@@ -1,7 +1,7 @@
 def main():
-    array = [2, 10, 23,-1, 123,11, 304,2,40]
-    quickSort(array)
-    print(array)
+    array = [2, 10, 1, 22, 33,11,76,0,0, 23,-1, 123,11, 304,2,40]
+    print(quickSort(array))
+    
     
 
 def quickSort(array, left = None, right = None):
@@ -10,12 +10,12 @@ def quickSort(array, left = None, right = None):
         left = 0
         right = len(array)-1
 
-    if left < right: #in other case the array has len = 1 or given data is invalid
+    if left < right: #in other case the array has len = 1 
         partitionPosition = part(array, left, right)  
         quickSort(array, left, partitionPosition -1) #sorting on the left of the chosen element
         quickSort(array, partitionPosition+1, right) #sorting on the right
 
-    if left==0 and right ==len(array)-1:
+    if left==0 and right ==len(array)-1: #only first iteration should return anythong
         return array    
 
 
