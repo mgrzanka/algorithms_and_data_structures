@@ -16,4 +16,3 @@ if __name__ == '__main__':
     to_sort = [1, 7, 4, 0, -1]
     sorted_list = insertion_sort(to_sort)
     print(sorted_list)
-    pass
