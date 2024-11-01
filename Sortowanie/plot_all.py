@@ -1,4 +1,4 @@
-from tests import get_words, make_messure
+from tests import get_words, make_meassure
 import matplotlib.pyplot as plt
 from src.buble_sort import bubble_sort
 from src.insertion_sort import insertion_sort
@@ -6,7 +6,7 @@ from src.selection_sort import selectionSort
 from src.merge_sort import merge_sort
 from src.quick_sort import quickSort
 
-#had to recreate this in order to use make_messure()
+#had to recreate this in order to use make_meassure()
 testing_map = {
         'bubble': bubble_sort, 
         'insert': insertion_sort, 
@@ -17,7 +17,9 @@ testing_map = {
 
 def plotAllAlgorithms():
     charactersToSort = list(range(1000, 10001, 500))
-    repetitionNumber = 10 #measurements can be made several times in order to make them more accurate
+    repetitionNumber = 10 
+    #measurements can be made several times in order to make them more accurate
+    #but it can take quite a while...
     timeValues = [] * len(charactersToSort)
 
     for algorithm in testing_map:
@@ -27,7 +29,7 @@ def plotAllAlgorithms():
             words = get_words("pan-tadeusz.txt", number)
             timeMeasured = 0
             for i in range(0, repetitionNumber):
-                timeMeasured += make_messure(words, algorithm)
+                timeMeasured += make_meassure(words, algorithm)
             print(".", end =" ") #one dot for every repetition
             timeValues.append(timeMeasured/repetitionNumber) #average value
             
@@ -40,8 +42,8 @@ def plotAllAlgorithms():
     plt.ylabel('time [seconds]')
     plt.xlabel('number of elements')
     plt.grid()
-    plt.savefig(f"plot_of_all_alogithms.png")
     plt.legend()
+    plt.savefig(f"plot_of_all_alogithms.png")
     plt.show()
 
 if __name__ =="__main__":

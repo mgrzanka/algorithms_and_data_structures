@@ -20,7 +20,7 @@ def get_words(file_name: str, n: int):
     return words
 
 
-def make_messure(words, algorithm_name: str):
+def make_meassure(words, algorithm_name: str):
     testing_map = {
         'bubble': bubble_sort, 'insert': insertion_sort, 'select': selectionSort, 'merge': merge_sort, 'quick': quickSort
     }
@@ -43,8 +43,8 @@ def test():
     times = []
     for indx, n in enumerate(n_values):
         words = get_words("pan-tadeusz.txt", n)
-        times.append(make_messure(words, algorithm_name))
-        print(f"{indx+1}/{len(n_values)} messures made")
+        times.append(make_meassure(words, algorithm_name))
+        print(f"{indx+1}/{len(n_values)} meassures made")
 
     plt.plot(n_values, times)
     plt.title(f"{algorithm_name.upper()}: execution time dependent on the size of the problem")
