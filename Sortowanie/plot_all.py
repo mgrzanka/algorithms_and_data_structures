@@ -18,24 +18,25 @@ testing_map = {
 def plotAllAlgorithms():
     charactersToSort = list(range(1000, 10001, 500))
     repetitionNumber = 10 #measurements can be made several times in order to make them more accurate
-    
+    timeValues = [] * len(charactersToSort)
+
     for algorithm in testing_map:
-        print("Testing algorithm: {}".format(algorithm), end=" ")
-        timeValues = [] * len(charactersToSort)
+        print("Plotting algorithm: {}".format(algorithm), end=" ")
+        timeValues = []
         for number in charactersToSort:
             words = get_words("pan-tadeusz.txt", number)
             timeMeasured = 0
             for i in range(0, repetitionNumber):
                 timeMeasured += make_messure(words, algorithm)
             print(".", end =" ") #one dot for every repetition
-            timeValues.append(timeMeasured/repetitionNumber)
+            timeValues.append(timeMeasured/repetitionNumber) #average value
             
         
         print("\nAdding results of {} to the plot".format(algorithm))
         plt.plot(charactersToSort, timeValues, label = algorithm)
 
     #Creating the plot
-    plt.title("Execution time dependent on the number of elements sorted")
+    plt.title("Execution time dependent on the number of elements sorted:")
     plt.ylabel('time [seconds]')
     plt.xlabel('number of elements')
     plt.grid()
