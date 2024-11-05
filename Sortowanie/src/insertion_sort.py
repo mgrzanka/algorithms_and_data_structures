@@ -6,7 +6,7 @@ def insertion_sort(to_sort: list):
     for i in range(1, n):
         element = sorted_list[i]
         j = i - 1
-        while element < sorted_list[j] and j>=0:
+        while j >= 0 and element < sorted_list[j]:
             sorted_list[j+1] = sorted_list[j]
             j -= 1
         sorted_list[j + 1] = element

@@ -39,7 +39,7 @@ def make_meassure(words, algorithm_name: str):
 
 def test():
     n_values = list(range(1000, 10001, 1000))
-    algorithm_name = 'insert'
+    algorithm_name = 'bubble'
     times = []
     for indx, n in enumerate(n_values):
         words = get_words("pan-tadeusz.txt", n)
@@ -51,7 +51,7 @@ def test():
     plt.xlabel('size of the problem')
     plt.ylabel('execution time')
     plt.grid()
-    plt.savefig(f"{algorithm_name}_sort_plot.png")
+    plt.savefig(os.path.join('plots', f"{algorithm_name}_sort_plot.png"))
     plt.show()
 
 
