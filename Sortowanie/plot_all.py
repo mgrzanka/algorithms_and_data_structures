@@ -17,8 +17,8 @@ testing_map = {
 }
 
 def plotAllAlgorithms():
-    charactersToSort = list(range(1000, 10001, 500))
-    repetitionNumber = 10
+    charactersToSort = list(range(1000, 10001, 1000))
+    repetitionNumber = 1
     #measurements can be made several times in order to make them more accurate
     #but it can take quite a while...
     timeValues = [] * len(charactersToSort)
