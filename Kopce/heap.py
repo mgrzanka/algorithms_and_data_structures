@@ -17,11 +17,14 @@ class Heap(ABC):
             return 0
 
     def get_children(self, index):
-        last_index = self.n_children*index + self.n_children
-        max_index = len(self.values)-1
-        upper_boud = self.n_children if last_index < max_index else (max_index-self.n_children*index) % self.n_children
+        first_child_index = self.n_children*index + 1
+        children = []
 
-        children = [self.n_children*index + bias for bias in range(1, upper_boud+1, 1)]
+        for i in range(self.n_children):
+            child_index = first_child_index + i
+            if child_index >= len(self.values):
+                break
+            children.append(child_index)
 
         return children
 
@@ -84,29 +87,29 @@ class Heap(ABC):
     def display(self) -> None:
         length = len(self.values)
         if length == 0: print("Heap empty")
-       
+
         else:
             levels = ceil(log(length, self.n_children)) #wiemy, że każdy element może mieć n_children dzieci
             printed = 0 #iterujemy po self.values
-            
+
             for level in range(levels+1):
                 if printed >= length: break
                 n_elements = (self.n_children)**level #maks liczba elementów na każdy poziom
                 #print(f"{n_elements:>3}:    ", end ="")
-                
+
                 print(" "* self.n_children*(levels - level), end ="") #wcięcie
 
                 for n in range(n_elements):
                     if printed >=length: break
- 
+
                     print(f"{self.values[printed]}", end =" ")
-                    printed+=1    
+                    printed+=1
 
                     if (n+1) % self.n_children == 0 and not n == n_elements-1:
                         print(f"| ", end="")
-                  
-                print() 
-            print() 
+
+                print()
+            print()
 
 
 class BinaryHeap(Heap):
@@ -129,7 +132,7 @@ class SevenArHeap(Heap):
 
 if __name__ == '__main__':
     binary_heap = BinaryHeap(values=[4, 6, 1, 10, 3, 0, -20, 16, 7, 50, 1, 11], min=True)
-    #TODO binary_heap.insert(440) --- to tutaj wyrzuca IndexError: list index out of range w get_child()
+    binary_heap.insert(440)
     value = binary_heap.pop()
     binary_heap.display()
 
