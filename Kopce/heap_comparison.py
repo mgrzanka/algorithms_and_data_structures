@@ -117,4 +117,4 @@ def popTimeComparison()->None:
 
 if __name__ == "__main__":
     creationTimeComparison()
-    popTimeComparison()
+    #popTimeComparison()
