@@ -66,7 +66,7 @@ def creationTimeComparison()->None:
         binTime.append(creationMeasurement("binary", testingList))
         fivTime.append(creationMeasurement("five-ar", testingList))
         sevTime.append(creationMeasurement("seven-ar", testingList))
-        print(f"{n} out of {len(numbers)} of measurements done.\n")
+        print(f"Measurements for {n} out of {numbers[-1]} done.\n")
         
     #i dodawać na odpowiednią listę
     plt.plot(numbers, binTime, label = "binary")
@@ -87,18 +87,22 @@ def creationTimeComparison()->None:
 def popTimeComparison()->None:
     numbers = list(range(10000, 100000, 10000))
     generated = generateList(100000)
-    binary = BinaryHeap(min=True, values=generated)
-    five = FiveArHeap(min =True, values =generated)
-    seven = SevenArHeap(min=True, values=generated)
 
+    
     binTime = [] * len(numbers)
     fivTime = [] * len(numbers)
     sevTime = [] * len(numbers)
     for n in numbers:
+        #creating the heaps time&time again, so that for each measurement thay are exactly the same (unmodified by .pop())
+        binary = BinaryHeap(min=True, values=generated)
+        five = FiveArHeap(min=True, values=generated)
+        seven = SevenArHeap(min=True, values=generated)
+
         #measure time that it takes to pop n elements
         binTime.append(popMeasurement(binary, n))
-        fivTime.append(popMeasurement(binary, n))
-        sevTime.append(popMeasurement(binary, n))
+        fivTime.append(popMeasurement(five, n))
+        sevTime.append(popMeasurement(seven, n))
+        print(f"Pop for {n} numbers done.")
         
     #i dodawać na odpowiednią listę
     plt.plot(numbers, binTime, label = "binary")
