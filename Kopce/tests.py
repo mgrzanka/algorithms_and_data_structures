@@ -68,20 +68,20 @@ def test_inserting_elements():
 def test_poping_elements():
     list  =  [21,17, 15, 14, 9, 13, 8, 5, 1, 10, 22, 3, -1, 22, 32, 99, 0, 200]
     list2 = [12, 11, 10, 9, 8, 7, 6, 5, 4,3,2, 1, 0, -1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12]
-    list3 = [21,17, 15, 14, 9, 13, 8, 5, 1, 10, 22, 3, -1, 22, 32, 99, 0, 200, 12, 11, 10, 9, 8, 7, 6, 5, 4,3,2, 1, 0]
+    list3 = [4, 6, 1, 10, 3, 88, 10, 11, 3, 2, 98, 99, 22, 4, 0, 8, 8, 8]
 
     binary = BinaryHeap(values=list)
     five = FiveArHeap(values=list2) 
-    seven = SevenArHeap(values=list3)
-    
+    seven = SevenArHeap(values=[0, 1, 4, 10, 3, 88, 10, 11, 6, 3, 98, 99, 22, 4, 2, 8, 8, 8, 777])      
+
     heapify(list)
     heapify(list2)
-    heapify(list3)
+    heapify(list3) 
 
     #making sure pop() returns the correct element for all heaps
     assert binary.pop() == heappop(list)
     assert five.pop() == heappop(list2) 
-    assert seven.pop() == heappop(list3)
+    assert seven.pop() == heappop(list3) #TODO ciężko mi znaleźć przyczynę, ale tutaj w get_child(self, index) wyskakuje IndexError
 
 
 
