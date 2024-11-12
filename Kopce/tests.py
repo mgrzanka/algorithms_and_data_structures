@@ -17,6 +17,7 @@ def test_all_equal_elements():
     five = FiveArHeap(values=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
     seven = SevenArHeap(values=[-1])
 
+    #should be the same length
     assert binary.values == [1,1,1,1,1,1,1,1,1,1,1]
     assert five.values == [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     assert seven.values == [-1]
@@ -35,7 +36,7 @@ def test_reverse_order():
 
 
 def test_max_heap():
-    binary = BinaryHeap(values=[21,17, 15, 14, 9, 13, 8, 5, 1], min =False)
+    binary = BinaryHeap(values=[21,17, 15, 14, 9, 13, 8, 5, 1], min=False)
     binary2 = BinaryHeap(values = [1, 2, 7, 3, 17, 19, 25, 36, 100], min=False)
 
     
@@ -54,7 +55,6 @@ def test_inserting_elements():
     five.insert(9)
     five.insert(7)
     
-
     seven = SevenArHeap(values=[12, 11, 10, 9, 8, 7, 6, 5, 4,3,2, 1, 0])
     seven.insert(-77) #should go to the top and so, rearrange the heap
  
@@ -72,7 +72,7 @@ def test_poping_elements():
 
     binary = BinaryHeap(values=list)
     five = FiveArHeap(values=list2) 
-    seven = SevenArHeap(values=[0, 1, 4, 10, 3, 88, 10, 11, 6, 3, 98, 99, 22, 4, 2, 8, 8, 8, 777])      
+    seven = SevenArHeap(values=list3)      
 
     heapify(list)
     heapify(list2)
@@ -81,8 +81,7 @@ def test_poping_elements():
     #making sure pop() returns the correct element for all heaps
     assert binary.pop() == heappop(list)
     assert five.pop() == heappop(list2) 
-    assert seven.pop() == heappop(list3) #TODO ciężko mi znaleźć przyczynę, ale tutaj w get_child(self, index) wyskakuje IndexError
-
+    assert seven.pop() == heappop(list3) 
 
 
 
