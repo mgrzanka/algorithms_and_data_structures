@@ -1,6 +1,12 @@
 from abc import ABC
 from math import ceil, log
+from random import randrange
 
+def generateList(num):
+    list = [] * num
+    for i in range(num):
+        list.append(randrange(1, 99))
+    return list
 
 class Heap(ABC):
     def __init__(self, min=True, values=None):
@@ -95,14 +101,13 @@ class Heap(ABC):
             for level in range(levels+1):
                 if printed >= length: break
                 n_elements = (self.n_children)**level #maks liczba elementów na każdy poziom
-                #print(f"{n_elements:>3}:    ", end ="")
-
-                print(" "* self.n_children*(levels - level), end ="") #wcięcie
+                                
+                print("\n", " "* (levels - level)*(self.n_children+1), end ="") #wcięcie
 
                 for n in range(n_elements):
                     if printed >=length: break
 
-                    print(f"{self.values[printed]}", end =" ")
+                    print(f"{self.values[printed]:>2}", end =" ")
                     printed+=1
 
                     if (n+1) % self.n_children == 0 and not n == n_elements-1:
@@ -131,19 +136,20 @@ class SevenArHeap(Heap):
 
 
 if __name__ == '__main__':
-    binary_heap = BinaryHeap(values=[4, 6, 1, 10, 3, 0, -20, 16, 7, 50, 1, 11], min=True)
-    binary_heap.insert(440)
+    binary_heap = BinaryHeap(values=[4, 6, 1, 10, 3, 30, -20, 16, 7, 50, 1, 11, 123, 14, 93, 87, 22, 33, 71, 29, 90, -3, 19, 34, 54, 65,84,92], min=True)
+    binary_heap.insert(0)
     value = binary_heap.pop()
+    print(f"\nMethod pop removed value: {value}. Now the binary heap looks like this: ")
     binary_heap.display()
 
-    five_ar_heap = FiveArHeap(values=[4, 6, 1, 10, 3, 88, 10, 6, 1, 10, 3, 0, -3, 44, 0]) #dla min = False mamy IndexError w children_indexes
+    five_ar_heap = FiveArHeap(values=[4, 6, 1, 10, 3, 88, 10, 6, 1, 10, 3, 20, -6, 44, 40])
     five_ar_heap.insert(0)
     value_5 = five_ar_heap.pop()
-    print(f"pop removed value: ", value_5, ". Now the heap looks like this: ")
+    print(f"Method pop removed value: {value_5}. Now the five-ary heap looks like this: ")
     five_ar_heap.display()
 
-    seven_ar_heap = SevenArHeap(values=[4, 6, 1, 10, 3, 88, 10, 11, 3, 2, 98, 99, 22, 4, -1])
+    seven_ar_heap = SevenArHeap(values=[4, 6, 1, 10, 3, 88, 10, 11, 3, 2, 98, 99, 22, 4, -1, 12, 770, 3, 333, 111, 99, 211, -2, 11, 50], min=False)
     seven_ar_heap.insert(0)
     value_4 = seven_ar_heap.pop()
-    print(f"Method pop removed value: ", value_4)
+    print(f"Method pop removed value: {value_4}, so now the seven-ary (max-heap) heap looks like this:")
     seven_ar_heap.display()
