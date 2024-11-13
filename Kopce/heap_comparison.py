@@ -26,9 +26,9 @@ def creationMeasurement(chosenHeap:str, list):
     start = time.process_time()
 
     heap = heaps[chosenHeap](values = list, min=True)
-    
+
     stop = time.process_time()
-    
+
     if gc_old: gc.enable()
 
     return stop - start
@@ -41,9 +41,9 @@ def popMeasurement(heap, num:int):
 
     for n in range(num):
         heap.pop()
-    
+
     stop = time.process_time()
-    
+
     if gc_old: gc.enable()
 
     return stop - start
@@ -59,7 +59,7 @@ def creationTimeComparison()->None:
     binTime = [] * len(numbers)
     fivTime = [] * len(numbers)
     sevTime = [] * len(numbers)
-    
+
     #dla każdego n z num będziemy mierzyć czas dla binary, five, seven
     for n in numbers:
         testingList = generated[:n]
@@ -67,7 +67,7 @@ def creationTimeComparison()->None:
         fivTime.append(creationMeasurement("five-ar", testingList))
         sevTime.append(creationMeasurement("seven-ar", testingList))
         print(f"Measurements for {n} out of {numbers[-1]} done.\n")
-        
+
     #i dodawać na odpowiednią listę
     plt.plot(numbers, binTime, label = "binary")
     plt.plot(numbers, fivTime, label = "five-ary")
@@ -78,8 +78,8 @@ def creationTimeComparison()->None:
     plt.xlabel('number of elements')
     plt.grid()
     plt.legend()
-     
-    plt.savefig(os.path.join("Kopce\plots","creation_time_comparison.png"))
+
+    plt.savefig(os.path.join("Kopce", "plots","creation_time_comparison.png"))
     plt.show()
 
 #zmierz czas wykonania n operacji usunięcia szczytu kopca (np. n = 10000,
@@ -88,7 +88,7 @@ def popTimeComparison()->None:
     numbers = list(range(10000, 100000, 10000))
     generated = generateList(100000)
 
-    
+
     binTime = [] * len(numbers)
     fivTime = [] * len(numbers)
     sevTime = [] * len(numbers)
@@ -103,7 +103,7 @@ def popTimeComparison()->None:
         fivTime.append(popMeasurement(five, n))
         sevTime.append(popMeasurement(seven, n))
         print(f"Pop for {n} numbers done.")
-        
+
     #i dodawać na odpowiednią listę
     plt.plot(numbers, binTime, label = "binary")
     plt.plot(numbers, fivTime, label = "five-ary")
@@ -114,11 +114,11 @@ def popTimeComparison()->None:
     plt.xlabel('number of elements')
     plt.grid()
     plt.legend()
-    plt.savefig(os.path.join("Kopce\plots", "pop_time_comparison.png"))
+    plt.savefig(os.path.join("Kopce", "plots", "pop_time_comparison.png"))
     plt.show()
 
 
 
 if __name__ == "__main__":
     creationTimeComparison()
-    #popTimeComparison()
+    popTimeComparison()

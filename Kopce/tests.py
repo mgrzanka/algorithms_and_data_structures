@@ -10,7 +10,7 @@ def test_empty_heap():
     assert binary.values == []
     assert five.values == []
     assert seven.values == []
-    
+
 
 def test_all_equal_elements():
     binary = BinaryHeap(values=[1,1,1,1,1,1,1,1,1,1,1])
@@ -38,7 +38,7 @@ def test_max_heap():
     binary = BinaryHeap(values=[21,17, 15, 14, 9, 13, 8, 5, 1], min =False)
     binary2 = BinaryHeap(values = [1, 2, 7, 3, 17, 19, 25, 36, 100], min=False)
 
-    
+
     assert binary.values == [21,17, 15, 14, 9, 13, 8, 5, 1]
     assert binary2.values == [100, 36, 19, 25, 3, 2, 17, 1, 7]
 
@@ -50,20 +50,20 @@ def test_inserting_elements():
 
     five = FiveArHeap(values=[], min=False)
     five.insert(0) #10 should go to the top but rest elements shouldn't change order
-    five.insert(10) 
+    five.insert(10)
     five.insert(9)
     five.insert(7)
-    
+
 
     seven = SevenArHeap(values=[12, 11, 10, 9, 8, 7, 6, 5, 4,3,2, 1, 0])
     seven.insert(-77) #should go to the top and so, rearrange the heap
- 
+
 
     #making sure that the values are correct after insert
     assert binary.values == [21, 17, 15, 14, 9, 13, 8, 5, 1, 0]
     assert five.values == [10, 0, 9, 7]
     assert seven.values == [-77, 0, 11, 10, 9, 8, 7, 6, 12, 5, 4, 3, 2, 1]
-    
+
 
 def test_poping_elements():
     list  =  [21,17, 15, 14, 9, 13, 8, 5, 1, 10, 22, 3, -1, 22, 32, 99, 0, 200]
@@ -71,18 +71,14 @@ def test_poping_elements():
     list3 = [4, 6, 1, 10, 3, 88, 10, 11, 3, 2, 98, 99, 22, 4, 0, 8, 8, 8]
 
     binary = BinaryHeap(values=list)
-    five = FiveArHeap(values=list2) 
-    seven = SevenArHeap(values=[0, 1, 4, 10, 3, 88, 10, 11, 6, 3, 98, 99, 22, 4, 2, 8, 8, 8, 777])      
+    five = FiveArHeap(values=list2)
+    seven = SevenArHeap(values=[0, 1, 4, 10, 3, 88, 10, 11, 6, 3, 98, 99, 22, 4, 2, 8, 8, 8, 777])
 
     heapify(list)
     heapify(list2)
-    heapify(list3) 
+    heapify(list3)
 
     #making sure pop() returns the correct element for all heaps
     assert binary.pop() == heappop(list)
-    assert five.pop() == heappop(list2) 
-    assert seven.pop() == heappop(list3) #TODO ciężko mi znaleźć przyczynę, ale tutaj w get_child(self, index) wyskakuje IndexError
-
-
-
-
+    assert five.pop() == heappop(list2)
+    assert seven.pop() == heappop(list3)
