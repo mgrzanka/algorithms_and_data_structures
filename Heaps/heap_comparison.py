@@ -3,7 +3,7 @@ import os
 import time
 from random import randrange
 import matplotlib.pyplot as plt
-from heap import BinaryHeap, FiveArHeap, SevenArHeap
+from Heaps.src.heap import BinaryHeap, FiveArHeap, SevenArHeap
 
 #Wygeneruj wejściową listę liczb (np. 100000 losowych liczb z zakresu od 1 do
 #300000), która posłuży dalej do badania wydajności.

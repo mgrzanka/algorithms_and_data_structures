@@ -1,4 +1,4 @@
-from heap import BinaryHeap, FiveArHeap, SevenArHeap
+from Heaps.src.heap import BinaryHeap, FiveArHeap, SevenArHeap
 from heapq import heapify, heappop
 
 def test_empty_heap():
